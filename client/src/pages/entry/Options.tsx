@@ -26,7 +26,6 @@ export const Options = ({ optionType }: OptionsProps) => {
       });
   }, [optionType]);
 
-  // TODO: replace `null` with ToppingOption when available
   const ItemComponent = optionType === OPTION_TYPE.SCOOPS ? ScoopOption : ToppingOption;
 
   const optionItems = items.map((item) => (

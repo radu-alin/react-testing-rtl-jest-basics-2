@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { Options } from '../Options';
 
-import { scoops } from '../../../mocks/data-mock';
+import { scoops, toppings } from '../../../mocks/data-mock';
 import { OPTION_TYPE } from '../entry.types';
 
 describe('Options', () => {
@@ -18,6 +18,20 @@ describe('Options', () => {
 
     // confirm alt text of images
     const altText = scoopImages.map((element) => element.alt);
+    expect(altText).toEqual([...testArray]);
+  });
+  test('display image for each topping option from server', async () => {
+    render(<Options optionType={OPTION_TYPE.TOPPINGS} />);
+
+    // find images and check the number of them
+    const toppingImages = await screen.findAllByRole('img', { name: /topping$/i });
+    const toppingsLength = toppings.length;
+    expect(toppingImages).toHaveLength(toppingsLength);
+
+    const testArray = ['Cherries topping', 'M&Ms topping', 'Hot fudge topping'];
+
+    // confirm alt text of images
+    const altText = toppingImages.map((element) => element.alt);
     expect(altText).toEqual([...testArray]);
   });
 });
