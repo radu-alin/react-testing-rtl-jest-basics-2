@@ -1,0 +1,7 @@
+Info
+
+tutorial: https://www.udemy.com/course/react-testing-library/
+
+github: https://github.com/radu-alin/react-testing-rtl-jest-basics-2.git
+
+app: sundaes
