@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 
 import { ScoopOption } from './ScoopOption';
 import { ToppingOption } from './ToppingOption';
+import { AlertBanner } from '../common/AlertBanner';
 
 import { OptionItem, OPTION_TYPE } from './entry.types';
 
@@ -14,15 +15,15 @@ export type OptionsProps = {
 
 export const Options = ({ optionType }: OptionsProps) => {
   const [items, setItems] = useState<OptionItem[]>([]);
+  const [error, setError] = useState(false);
 
   // optionType is 'scoops' or 'toppings
   useEffect(() => {
     axios
       .get(`http://localhost:3030/${optionType}`)
       .then((response) => setItems(response.data))
-      .catch((error) => {
-        console.log('%c-> developmentConsole: error= ', 'color:#77dcfd', error);
-        // TODO: handle error response
+      .catch((_) => {
+        setError(true);
       });
   }, [optionType]);
 
@@ -32,5 +33,5 @@ export const Options = ({ optionType }: OptionsProps) => {
     <ItemComponent key={item.name} name={item.name} imagePath={item.imagePath} />
   ));
 
-  return <Row>{optionItems}</Row>;
+  return <Row>{error ? <AlertBanner /> : optionItems}</Row>;
 };

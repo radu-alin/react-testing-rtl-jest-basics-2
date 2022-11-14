@@ -11,7 +11,9 @@ describe('Options', () => {
     const scoopsLength = scoops.length;
 
     // find images and check the number of them
-    const scoopImages = await screen.findAllByRole('img', { name: /scoop$/i });
+    const scoopImages = (await screen.findAllByRole('img', {
+      name: /scoop$/i,
+    })) as HTMLImageElement[];
     expect(scoopImages).toHaveLength(scoopsLength);
 
     const testArray = ['Chocolate scoop', 'Vanilla scoop'];
@@ -24,7 +26,9 @@ describe('Options', () => {
     render(<Options optionType={OPTION_TYPE.TOPPINGS} />);
 
     // find images and check the number of them
-    const toppingImages = await screen.findAllByRole('img', { name: /topping$/i });
+    const toppingImages = (await screen.findAllByRole('img', {
+      name: /topping$/i,
+    })) as HTMLImageElement[];
     const toppingsLength = toppings.length;
     expect(toppingImages).toHaveLength(toppingsLength);
 
