@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import { OrderEntry } from './pages/entry/OrderEntry';
 import OrderSummary from './pages/summary/OrderSummary';
 
-function App() {
+export const App = () => {
   return (
     <Container>
       <OrderDetailsProvider>
@@ -16,6 +16,6 @@ function App() {
       </OrderDetailsProvider>
     </Container>
   );
-}
+};
 
 export default App;
