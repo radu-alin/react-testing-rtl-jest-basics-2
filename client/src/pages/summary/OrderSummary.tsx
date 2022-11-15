@@ -2,8 +2,13 @@ import React from 'react';
 import { SummaryForm } from './SummaryForm';
 import { useOrderDetails } from '../../contexts/OrderDetails';
 import { formatCurrency } from '../../utilities';
+import { PHASE_TYPE } from '../confirmation/confirmation.types';
 
-export default function OrderSummary({ setOrderPhase }: { setOrderPhase: () => void }) {
+export const OrderSummary = ({
+  setOrderPhase,
+}: {
+  setOrderPhase: (orderPhase: PHASE_TYPE) => void;
+}) => {
   const { totals, optionCounts } = useOrderDetails();
 
   const scoopArray = Object.entries(optionCounts.scoops);
@@ -43,4 +48,4 @@ export default function OrderSummary({ setOrderPhase }: { setOrderPhase: () => v
       <SummaryForm setOrderPhase={setOrderPhase} />
     </div>
   );
-}
+};

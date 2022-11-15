@@ -3,11 +3,12 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
+import { PHASE_TYPE } from '../confirmation/confirmation.types';
 
 export const SummaryForm = ({
   setOrderPhase,
 }: {
-  setOrderPhase?: (orderPhase: string) => void;
+  setOrderPhase: (orderPhase: PHASE_TYPE) => void;
 }) => {
   const [tcChecked, setTcChecked] = useState(false);
 
@@ -16,9 +17,7 @@ export const SummaryForm = ({
 
     // pass along to the next phase.
     // The next page will handle submitting order from context.
-    if (setOrderPhase) {
-      setOrderPhase('completed');
-    }
+    setOrderPhase(PHASE_TYPE.COMPLETED);
   }
 
   const popover = (

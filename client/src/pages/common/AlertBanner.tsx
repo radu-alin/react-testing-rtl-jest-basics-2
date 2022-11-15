@@ -1,8 +1,8 @@
 import Alert from 'react-bootstrap/Alert';
 
 type AlertBannerProps = {
-  message?: string;
-  variant?: string;
+  message?: string | null;
+  variant?: string | null;
 };
 
 export const AlertBanner = ({ message, variant }: AlertBannerProps) => {

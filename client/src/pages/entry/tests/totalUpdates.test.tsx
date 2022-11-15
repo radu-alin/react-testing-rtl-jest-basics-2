@@ -61,7 +61,7 @@ describe('totalUpdates', () => {
 
 describe('grand total', () => {
   test('grand total starts at $0.00', async () => {
-    render(<OrderEntry />);
+    render(<OrderEntry setOrderPhase={jest.fn()} />);
 
     const grandTotal = screen.getByRole('heading', { name: /Grand total: \$/ });
 
@@ -76,7 +76,7 @@ describe('grand total', () => {
 
   test('grand total updates properly if scoop is added first', async () => {
     const user = userEvent.setup();
-    render(<OrderEntry />);
+    render(<OrderEntry setOrderPhase={jest.fn()} />);
     const grandTotal = screen.getByRole('heading', { name: /Grand total: \$/ });
 
     const vanillaInput = await screen.findByRole('spinbutton', { name: /vanilla/i });
@@ -93,7 +93,7 @@ describe('grand total', () => {
 
   test('grand total updates properly if topping is added first', async () => {
     const user = userEvent.setup();
-    render(<OrderEntry />);
+    render(<OrderEntry setOrderPhase={jest.fn()} />);
     const grandTotal = screen.getByRole('heading', { name: /Grand total: \$/ });
     const cherriesCheckbox = await screen.findByRole('checkbox', { name: /cherries/i });
     await user.click(cherriesCheckbox);
@@ -103,7 +103,7 @@ describe('grand total', () => {
 
   test('grand total updates properly if item is removed', async () => {
     const user = userEvent.setup();
-    render(<OrderEntry />);
+    render(<OrderEntry setOrderPhase={jest.fn()} />);
     const grandTotal = screen.getByRole('heading', { name: /Grand total: \$/ });
     const vanillaInput = await screen.findByRole('spinbutton', { name: /vanilla/i });
     await user.clear(vanillaInput);
