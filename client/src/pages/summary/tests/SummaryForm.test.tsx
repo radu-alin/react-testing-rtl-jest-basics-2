@@ -5,7 +5,7 @@ import { SummaryForm } from '../SummaryForm';
 
 describe('SummaryForm', () => {
   test('initial conditions', () => {
-    render(<SummaryForm />);
+    render(<SummaryForm setOrderPhase={jest.fn()} />);
     const checkbox = screen.getByRole('checkbox', {
       name: /terms and conditions/i,
     });
@@ -19,7 +19,7 @@ describe('SummaryForm', () => {
     test('checkbox enables button on first click and disables on second click', async () => {
       const user = userEvent.setup();
 
-      render(<SummaryForm />);
+      render(<SummaryForm setOrderPhase={jest.fn()} />);
       const checkbox = screen.getByRole('checkbox', {
         name: /terms and conditions/i,
       });
@@ -36,7 +36,7 @@ describe('SummaryForm', () => {
   describe('Popover', () => {
     test('popover responds to hover', async () => {
       const user = userEvent.setup();
-      render(<SummaryForm />);
+      render(<SummaryForm setOrderPhase={jest.fn()} />);
 
       // popover starts hidden
       const nullPopover = screen.queryByText(/no ice cream will actually be delivered/i);
