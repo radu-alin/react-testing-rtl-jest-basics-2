@@ -56,7 +56,7 @@ export const OrderConfirmation = ({
         </div>
       );
     }
-    return <div>Loading</div>;
+    return <div style={{ textAlign: 'center' }}>Loading...</div>;
   };
 
   return <>{renderContent()}</>;

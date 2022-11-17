@@ -36,9 +36,14 @@ test('order phases for happy path', async () => {
   const termsAndConditions = screen.getByRole('checkbox', {
     name: /terms and conditions/i,
   });
-  const confirmOrder = screen.getByRole('button', { name: /confirm order/i });
   await user.click(termsAndConditions);
+
+  const confirmOrder = screen.getByRole('button', { name: /confirm order/i });
   await user.click(confirmOrder);
+
+  // expect "Loading..." to show
+  const loading = screen.getByText(/loading/i);
+  expect(loading).toBeInTheDocument();
 
   // confirm order number on confirmation page
   const thankYouHeader = await screen.findByRole('heading', { name: /thank you!/i });
@@ -46,6 +51,10 @@ test('order phases for happy path', async () => {
 
   const orderConfirmation = screen.getByText(/your order number is /i);
   expect(orderConfirmation).toBeInTheDocument();
+
+  // expect "Loading..." to disapear
+  const notLoading = screen.queryByText(/loading/i);
+  expect(notLoading).not.toBeInTheDocument();
 
   // click "New order" button on confirmation page
   const newOrder = screen.getByRole('button', { name: /create new order/i });
