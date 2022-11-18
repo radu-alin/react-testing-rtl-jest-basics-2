@@ -6,8 +6,8 @@ import { formatCurrency } from '../../utilities';
 import { useOrderDetails } from '../../contexts/OrderDetails';
 
 import Row from 'react-bootstrap/Row';
-import { ScoopOption } from './ScoopOption';
-import { ToppingOption } from './ToppingOption';
+import { ScoopOptions } from './ScoopOptions';
+import { ToppingOptions } from './ToppingOptions';
 import { AlertBanner } from '../common/AlertBanner';
 
 import { OptionItem, OPTION_TYPE } from './entry.types';
@@ -32,7 +32,7 @@ export const Options = ({ optionType }: OptionsProps) => {
       });
   }, [optionType]);
 
-  const ItemComponent = optionType === OPTION_TYPE.SCOOPS ? ScoopOption : ToppingOption;
+  const ItemComponent = optionType === OPTION_TYPE.SCOOPS ? ScoopOptions : ToppingOptions;
 
   const title = optionType[0].toUpperCase() + optionType.slice(1).toLowerCase();
 

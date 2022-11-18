@@ -22,11 +22,10 @@ export const OrderSummary = ({
   // only display toppings if the toppings total is nonzero
   const hasToppings = totals.toppings > 0;
   let toppingsDisplay = null;
-
   if (hasToppings) {
     const toppingsArray = Object.entries(optionCounts.toppings);
     const toppingList = toppingsArray.map(([key, value]) => {
-      if (typeof value === 'number' && value > 0) {
+      if (Number(value) > 0) {
         return <li key={key}>{`${value} ${key}`}</li>;
       }
       return null;

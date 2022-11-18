@@ -4,7 +4,7 @@ import { useOrderDetails } from '../../contexts/OrderDetails';
 
 import { OptionItem, OPTION_TYPE } from './entry.types';
 
-export const ToppingOption = ({ name, imagePath }: OptionItem) => {
+export const ToppingOptions = ({ name, imagePath }: OptionItem) => {
   const { updateItemCount } = useOrderDetails();
 
   return (

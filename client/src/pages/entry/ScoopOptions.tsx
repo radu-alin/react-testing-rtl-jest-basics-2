@@ -6,7 +6,7 @@ import { useOrderDetails } from '../../contexts/OrderDetails';
 
 import { OptionItem, OPTION_TYPE } from './entry.types';
 
-export const ScoopOption = ({ name, imagePath }: OptionItem) => {
+export const ScoopOptions = ({ name, imagePath }: OptionItem) => {
   const { updateItemCount } = useOrderDetails();
 
   return (
